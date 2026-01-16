@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <title>Bus Dashboard</title>
     <style>
         body { font-family: -apple-system, sans-serif; background: #222; color: #fff; padding: 40px; }
-        .bus-row { display: flex; justify-content: space-between; font-size: 3rem; margin-bottom: 20px; border-bottom: 1px solid #444; padding-bottom: 10px; }
+        .bus-row { display: flex; justify-content: space-between; font-size: 6rem; margin-bottom: 20px; border-bottom: 1px solid #444; padding-bottom: 10px; }
         .line-number { font-weight: bold; color: #E56E00; /* TPG Orange-ish */ width: 15%; }
         .destination { width: 55%; }
         .time { font-size: 6rem; font-weight: bold; width: 30%; text-align: right; }
@@ -17,7 +18,7 @@
 
     <script>
         // CONFIGURATION
-const STOP_NAME = "Geneve,Cirque"; // Replace with your actual stop name
+const STOP_NAME = "Geneve, Cirque"; // Replace with your actual stop name
 
 async function fetchBuses() {
     const now = new Date();
@@ -75,6 +76,10 @@ async function fetchBuses() {
         console.error("Error fetching data:", error);
     }
 }
+
+// Fetch on page load and refresh every 30 seconds
+fetchBuses();
+setInterval(fetchBuses, 30000);
     </script>
 </body>
 </html>
